@@ -1,3 +1,4 @@
+//test
 const WebSocket = require('ws');
 const socket = new WebSocket('wss://ws.finnhub.io?token=br948dvrh5rbhn68uad0');
 

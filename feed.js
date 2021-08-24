@@ -6,6 +6,7 @@ var onChangeHandler;
 var stock;
 var stocks = [
     {symbol: "AAPL", open: 180.00},
+    {symbol: "MSFT", open: 9692.43},
     {symbol: "BINANCE:BTCUSDT", open: 9692.43},
 ];
 
@@ -18,8 +19,9 @@ stocks.forEach(function(stock) {
 
 // Connection opened -> Subscribe
 socket.addEventListener('open', function (event) {
-    socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
-    socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'BINANCE:BTCUSDT'}))
+//    socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
+//    socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
+   socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'BINANCE:BTCUSDT'}))
 //    socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'IC MARKETS:1'}))
 });
 

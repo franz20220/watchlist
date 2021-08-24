@@ -90,7 +90,7 @@ var StockTable = React.createClass({
 var HomePage = React.createClass({
     getInitialState: function() {
         var stocks = {};
-        feed.watch(['AAPL', 'BINANCE:BTCUSDT']);
+        feed.watch(['AAPL', 'MSFT','BINANCE:BTCUSDT']);
         feed.onChange(function(stock) {
             stocks[stock.symbol] = stock;
             this.setState({stocks: stocks, last: stock});

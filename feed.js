@@ -9,6 +9,9 @@ var stocks = [
     {symbol: "MSFT", open: 9692.43},
     {symbol: "BINANCE:BTCUSDT", open: 9692.43},
 ];
+var counter = 0;
+var symbol;
+var mod_counter;
 
 stocks.forEach(function(stock) {
     stock.last = stock.open;
@@ -27,7 +30,6 @@ socket.addEventListener('open', function (event) {
 
 
 
-
 // Listen for messages
 socket.addEventListener('message', function (event) {
 //    console.log('Message from server ', event.data);
@@ -39,12 +41,32 @@ socket.addEventListener('message', function (event) {
     } else {
         //    console.log('Price', obj.data[0].p);
 
-         console.log('Symbol:', obj.data[0].s, ',', 'Price:', obj.data[0].p);
+        //console.log('Symbol:', obj.data[0].s, ',', 'Price:', obj.data[0].p);
 
+//nur zum Testen         
+        counter += 1;
+        mod_counter = counter % 3;
+        switch (mod_counter) {
+            case 0:
+                obj.data[0].s = "AAPL";
+                obj.data[0].p = obj.data[0].p / 400;
+                break;
+            case 1:
+                obj.data[0].s = "MSFT";
+                obj.data[0].p = obj.data[0].p / 200;
+                break;
+            case 2:
+                obj.data[0].s = "BINANCE:BTCUSDT";    
+                break;                             
+        }
+
+        
+        console.log('Symbol:', obj.data[0].s, ',', 'Price:', obj.data[0].p);
+//Ende nur zum Testen
 
         for (var i = 0; i < stocks.length; ++i) {
             if (stocks[i]['symbol'] === obj.data[0].s) {
-                stocks[i]['last'] = obj.data[0].p;
+                stocks[i]['last'] = obj.data[0].p;            
                 stock = stocks[i];
             }
         }

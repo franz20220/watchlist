@@ -38,7 +38,8 @@ socket.addEventListener('message', function (event) {
         // Object is empty (Would return true in this example)
     } else {
         //    console.log('Price', obj.data[0].p);
-        console.log('Symbol:', obj.data[0].s, ',', 'Price:', obj.data[0].p);
+
+         console.log('Symbol:', obj.data[0].s, ',', 'Price:', obj.data[0].p);
 
 
         for (var i = 0; i < stocks.length; ++i) {
